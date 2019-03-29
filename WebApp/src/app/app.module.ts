@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,8 +10,7 @@ import { PagenotfoundComponent } from './erros/pagenotfound/pagenotfound.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule, MatRadioModule, MatButtonModule, 
-         MatTableModule } from '@angular/material';
-
+         MatTableModule, MatIconModule, MatPaginatorModule, MatSort, MatSortModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -27,10 +27,14 @@ import { MatInputModule, MatRadioModule, MatButtonModule,
     MatInputModule,
     MatRadioModule,
     MatButtonModule, 
-    MatTableModule
+    MatTableModule, 
+    MatIconModule, 
+    HttpClientModule, //Adicionei aqui (icone) //from '@angular/common/http';
+    MatPaginatorModule, 
+    MatSortModule
 
   ],
-  providers: [],
+  providers: [HttpClient], //Adicionei aqui (icone)
   bootstrap: [AppComponent]
 })
 export class AppModule { }
