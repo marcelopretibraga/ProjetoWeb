@@ -10,7 +10,7 @@ import { PagenotfoundComponent } from './erros/pagenotfound/pagenotfound.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule, MatRadioModule, MatButtonModule, 
-         MatTableModule, MatIconModule, MatPaginatorModule, MatSort, MatSortModule } from '@angular/material';
+         MatTableModule, MatIconModule, MatPaginatorModule, MatSort, MatSortModule, MatExpansionModule, MatSelectModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,9 @@ import { MatInputModule, MatRadioModule, MatButtonModule,
     MatIconModule, 
     HttpClientModule, //Adicionei aqui (icone) //from '@angular/common/http';
     MatPaginatorModule, 
-    MatSortModule
+    MatSortModule, 
+    MatExpansionModule, 
+    MatSelectModule
 
   ],
   providers: [HttpClient], //Adicionei aqui (icone)
