@@ -100,19 +100,16 @@ export class PessoaComponent implements OnInit {
   }
 
   atualizarPessoaListbox(){
-    console.log("Chamou atualizarPessoaListbox codigo - "+this.pessoaSelId);
+    console.log("Chamou atualizarPessoaListbox codigo ----------> "+this.pessoaSelId);
     let id = this.pessoaSelId;
-    //console.log("Chamou atualizarPessoaListbox -------------->");
-    //console.log(pessoa);
     let pessoaSel;
     this.pessoas.forEach(function (item) {
       if (item.pessoaId == id) {
         pessoaSel = item;
         alert("Propriedade da pessoa selecionada "+item.telefones);
-
       }
     });
-
+    this.pessoaSel = pessoaSel;
   }
 
 }
