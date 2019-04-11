@@ -8,13 +8,13 @@
   <div class="col s12 m3 l3">
     <mat-form-field>
       <!--APP MODULE TS É AONDE IMPORTA OS  COMPONENTES DO MATERIAL-->
-      <input matInput placeholder="Id" type="number" [(ngModel)]="pessoa.pessoaId" required>
+      <input matInput placeholder="Id" type="number" [(ngModel)]="pessoaModel.pessoaId" required>
       <!-- NgModel referencia o html com typeScript-->
     </mat-form-field>
   </div>
   <div class="col s12 m9 l9">
     <mat-form-field>
-      <input matInput placeholder="Nome" type="text" [(ngModel)]="pessoa.nome" required>
+      <input matInput placeholder="Nome" type="text" [(ngModel)]="pessoaModel.nome" required>
     </mat-form-field>
   </div>
 </div>
@@ -22,19 +22,19 @@
 <div class="row">
   <div class="col s12 m4 l4">
     <mat-form-field>
-      <input matInput placeholder="Idade" type="number" [(ngModel)]="pessoa.idade" required>
+      <input matInput placeholder="Idade" type="number" [(ngModel)]="pessoaModel.idade" required>
     </mat-form-field>
   </div>
 
   <div class="col s12 m4 l4">
     <mat-form-field>
-      <input matInput placeholder="CPF" type="text" [(ngModel)]="pessoa.cpf" required>
+      <input matInput placeholder="CPF" type="text" [(ngModel)]="pessoaModel.cpf" required>
     </mat-form-field>
   </div>
 
   <div class="col s12 m4 l4">
     <mat-form-field>
-      <input matInput placeholder="RG" type="text" [(ngModel)]="pessoa.rg" required>
+      <input matInput placeholder="RG" type="text" [(ngModel)]="pessoaModel.rg" required>
     </mat-form-field>
   </div>
 </div>
@@ -94,6 +94,19 @@
 <div class="row">
   <div class="col s12 m12 l12">  
     <mat-table #table [dataSource]="dataSource" matSort class="table-striped">
+
+      <ng-container matColumnDef="actionsColumn">
+          <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+              <button mat-icon-button>
+                  <mat-icon class="link_action" svgIcon="form-trash" matTooltip="Excluir" (click)="excluir(element.pessoaId)"></mat-icon>
+              </button>  
+              <button mat-icon-button>
+                  <mat-icon class="link_action" svgIcon="form-edit" matTooltip="Editar" (click)="editar(element.pessoaId)"></mat-icon>
+              </button>
+          </mat-cell>
+        </ng-container>   
+
       <!-- Codigo -->
       <ng-container matColumnDef="pessoaId">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>

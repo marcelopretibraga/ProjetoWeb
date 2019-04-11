@@ -11,9 +11,9 @@ import { Telefone } from './models/telefone';
 })
 export class PessoaComponent implements OnInit {
 
-  displayedColumns: string[] = ['pessoaId', 'nome', 'idade', 'cpf', 'rg'];
+  displayedColumns: string[] = ['actionsColumn', 'pessoaId', 'nome', 'idade', 'cpf', 'rg'];
   
-  public pessoa: Pessoa = new Pessoa;
+  public pessoaModel: Pessoa = new Pessoa();
   public pessoas: Array<Pessoa>;
   public dataSource: any;
   public palavraChave: string;
@@ -28,18 +28,17 @@ export class PessoaComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.pessoa = new Pessoa();
     this.pessoas = new Array<Pessoa>();
     this.isExpandido = 1;
     this.carregaDadosFake();    
   }
 
   carregaDadosFake(){
-    this.pessoa.pessoaId = 1;
-    this.pessoa.nome = 'Marcelo Preti Braga';
-    this.pessoa.idade = 27;
-    this.pessoa.cpf = '0775694545487';
-    this.pessoa.rg = '215154';
+    this.pessoaModel.pessoaId = 1;
+    this.pessoaModel.nome = 'Marcelo Preti Braga';
+    this.pessoaModel.idade = 27;
+    this.pessoaModel.cpf = '0775694545487';
+    this.pessoaModel.rg = '215154';
 
     this.telefones = new Array<Telefone>();
     this.telefone = new Telefone();
@@ -52,26 +51,26 @@ export class PessoaComponent implements OnInit {
     this.telefone.numero = '111111111';
     this.telefones.push(this.telefone);
 
-    this.pessoa.telefones = this.telefones;
-    this.pessoas.push(this.pessoa);
+    this.pessoaModel.telefones = this.telefones;
+    this.pessoas.push(this.pessoaModel);
 
-    this.pessoa = new Pessoa();
-    this.pessoa.pessoaId = 2;
-    this.pessoa.nome = 'Sem telefone';
-    this.pessoa.idade = 27;
-    this.pessoa.cpf = '0775694545487';
-    this.pessoa.rg = '215154';
-    this.pessoas.push(this.pessoa);
+    this.pessoaModel = new Pessoa();
+    this.pessoaModel.pessoaId = 2;
+    this.pessoaModel.nome = 'Sem telefone';
+    this.pessoaModel.idade = 27;
+    this.pessoaModel.cpf = '0775694545487';
+    this.pessoaModel.rg = '215154';
+    this.pessoas.push(this.pessoaModel);
 
   }
 
   salvarPessoa(){
     console.log("Pessoa Salva")
-    console.log(this.pessoa);
-    this.pessoas.push(this.pessoa);
+    console.log(this.pessoaModel);
+    this.pessoas.push(this.pessoaModel);
     console.log("Lista de Pessoas");
     console.log(this.pessoas);
-    this.pessoa = new Pessoa(); //Instancia uma nova pessoa para não perder a referência da primeira0,
+    this.pessoaModel = new Pessoa(); //Instancia uma nova pessoa para não perder a referência da primeira0,
 
     //this.displayedColumns = ['pessoaId', 'nome', 'idade'];
     this.dataSource = new MatTableDataSource<Pessoa>(this.pessoas);
@@ -102,14 +101,30 @@ export class PessoaComponent implements OnInit {
   atualizarPessoaListbox(){
     console.log("Chamou atualizarPessoaListbox codigo ----------> "+this.pessoaSelId);
     let id = this.pessoaSelId;
-    let pessoaSel;
+    let pessoaSelLocal;
     this.pessoas.forEach(function (item) {
       if (item.pessoaId == id) {
-        pessoaSel = item;
+        pessoaSelLocal = item;
         alert("Propriedade da pessoa selecionada "+item.telefones);
       }
     });
-    this.pessoaSel = pessoaSel;
+    this.pessoaSel = pessoaSelLocal;
+  }
+
+  excluir(pessoaId: number){
+    alert("Excluiiiiiiiiiiiiiiiiiir ===>"+pessoaId);
+    
+  }
+
+  editar(pessoaId: number){
+    alert("Editarrrrrrrrrrrr ==> "+pessoaId);
+    let pessoaUpdate;
+    this.pessoas.forEach(item => {
+      if (item.pessoaId == pessoaId) {
+        pessoaUpdate = item;
+      }
+    });
+    this.pessoaModel = pessoaUpdate;
   }
 
 }

@@ -816,6 +816,10 @@ body {
     padding-bottom: 15px;
     text-transform: uppercase;
   }
+
+  .link_action{
+    cursor: pointer;
+  }
   .heading .heading__tools {
     display: flex;
     align-items: center;
