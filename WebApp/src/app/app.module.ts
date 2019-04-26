@@ -11,12 +11,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule, MatRadioModule, MatButtonModule, 
          MatTableModule, MatIconModule, MatPaginatorModule, MatSort, MatSortModule, MatExpansionModule, MatSelectModule } from '@angular/material';
+import { VeiculoComponent } from './cadastros/veiculo/veiculo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PessoaComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    VeiculoComponent
   ],
   imports: [
     BrowserModule,
